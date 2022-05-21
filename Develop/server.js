@@ -1,5 +1,7 @@
 const express = require('express');
+// npm package that parses the request body
 const bodyParser = require('body-parser');
+// npm package that 
 const path = require('path');
 const fs = require('fs');
 // brings in our json file 
