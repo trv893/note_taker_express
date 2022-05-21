@@ -6,7 +6,7 @@ const path = require('path');
 const fs = require('fs');
 // brings in our json file 
 const db = require('./db/db.json');
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 // npm package that generates a unique id
 var uniqid = require('uniqid'); 
 
