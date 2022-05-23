@@ -23,7 +23,7 @@ To install necessary dependencies, run the following command:
 
 Allows user to save notes, view saved notes and delete at will. Built using json file as local storage.
 
-![Example](./assets/example.jpg)
+![Example](./Assets/example.JPG)
 
 ## Features
 
