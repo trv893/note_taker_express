@@ -138,3 +138,79 @@ You are required to submit BOTH of the following for review:
 
 - - -
 © 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+
+
+const express = require('express');
+const path = require('path');
+const fs = require('fs');
+const api = require('./Develop/public/assets/js/index');
+const PORT = process.env.PORT || 3001;
+let readFile = []
+fs.readFile(./develop/db/db.json, 'utf8', (err, data) =>
+  err
+    ? console.error(err)
+    : readFile = JSON.parse(data)
+);
+
+const app = express();
+app.use('/api', api);
+app.use(express.static('public'));
+
+
+// GET Route for homepage
+app.get('*', (req, res) =>
+  res.sendFile(path.join(dirname, '/index.html'))
+);
+app.get('/notes', (req, res) =>
+  res.sendFile(path.join(dirname, '/notes.html'))
+);
+app.get('/api/notes/')
+    fs.writeFile(./develop/db/db.json, noteString, (err) =>
+      err
+        ? console.error(err)
+        : console.log(
+          Note for ${newNote} has been written to JSON file
+        )
+    );
+
+app.post('/api/notes', (req, res) => {
+
+    console.info(${req.method} request received to add a comment);
+
+    const { title, text } = req.body;
+
+
+    if (title && text) {
+
+      const newNote = {
+        title,
+        text
+      };
+
+
+      readFile.push(newNote);
+      const noteString = JSON.stringify(readFile);
+
+
+      app.get('/api/notes/')
+      fs.writeFile(./develop/db/db.json, noteString, (err) =>
+        err
+          ? console.error(err)
+          : console.log(
+            Note for ${newNote.title} has been written to JSON file
+          )
+      );
+
+      const response = {
+        status: 'success',
+        body: newNote,
+      };
+
+      console.log(response);
+      res.status(201).json(response);
+    } else {
+      res.status(500).json('Error in posting note');
+    }
+  });
+
+app.listen(PORT, () => console.log(App listening on port http://localhost:${PORT}));

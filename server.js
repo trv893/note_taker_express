@@ -33,7 +33,7 @@ app.post('/api/notes', (req, res) =>{
     text,
     id : uniqid(),
   }
-  console.log(req.body);
+  console.log(req.body);  
   db.push(newnote);
   fs.writeFile('./db/db.json',JSON.stringify(db), (err) => console.log(err));
 
