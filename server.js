@@ -1,7 +1,7 @@
 const express = require('express');
 // npm package that parses the request body
 const bodyParser = require('body-parser');
-// npm package that 
+// npm package that handles file paths
 const path = require('path');
 const fs = require('fs');
 // brings in our json file 
@@ -24,8 +24,11 @@ app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/notes.html'));
 });
 
+// GET request for notes
 app.get('/api/notes', (req, res) => res.json(db));
 
+
+// POST request for notes
 app.post('/api/notes', (req, res) =>{
   const { title, text } = req.body;
   const newnote = {
@@ -39,6 +42,7 @@ app.post('/api/notes', (req, res) =>{
 
 } );
 
+// DELETE request for notes.html
 app.delete('/api/notes/:id', (req, res) =>{
   console.log(req.params.id)
   let index = db.findIndex(item => item.id === req.params.id);
