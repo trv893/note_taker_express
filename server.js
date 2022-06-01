@@ -39,6 +39,7 @@ app.post('/api/notes', (req, res) =>{
   console.log(req.body);  
   db.push(newnote);
   fs.writeFile('./db/db.json',JSON.stringify(db), (err) => console.log(err));
+  res.json("completed")
 
 } );
 
